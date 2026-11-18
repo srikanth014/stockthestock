@@ -1,0 +1,25 @@
+[project]
+name = "stockthestock"
+version = "0.1.0"
+description = "Evidence-led stock research workflow built with CrewAI"
+authors = [{ name = "StockTheStock contributors" }]
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.3.0",
+    "python-dotenv>=1,<2",
+    "requests>=2.31,<3",
+]
+
+[project.scripts]
+kickoff = "stockthestock.main:kickoff"
+run_crew = "stockthestock.main:kickoff"
+plot = "stockthestock.main:plot"
+run_with_trigger = "stockthestock.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "flow"

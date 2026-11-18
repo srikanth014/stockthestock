@@ -1,0 +1,27 @@
+review_evidence:
+  description: >
+    Audit the evidence for {query} in {geography} as of {research_date}. Review
+    the Research Crew's collected research, analysis, risk, and thesis challenge:
+    {research_evidence}. Identify unsupported statements, missing
+    citations, date/period mismatches, contradictory claims, and evidence gaps.
+    Do not add facts not present in the supplied materials.
+  expected_output: >
+    An evidence-review log listing material claims that are supported,
+    qualified, contradicted, or unverified, plus corrections required.
+  agent: evidence_reviewer
+
+write_report:
+  description: >
+    Write the final Markdown research report for {query} in {geography}, as of
+    {research_date}, considering a {investment_horizon} horizon. Use the
+    Research Crew's findings: {research_evidence}, and the preceding evidence
+    review. Include executive summary, scope and
+    methodology, company/sector overview, market and financial evidence,
+    fundamental and technical context, bull and bear cases, key risks,
+    catalysts, evidence gaps, and a balanced conclusion. Attribute sources and
+    dates wherever supplied. Clearly mark unverified items and do not present
+    this as personalized financial advice.
+  expected_output: >
+    A complete Markdown research report with traceable evidence, balanced
+    conclusions, material risks, and a clear financial-research disclaimer.
+  agent: report_writer

@@ -1,0 +1,85 @@
+research_market:
+  description: >
+    Research {query} in {geography} as of {research_date}, considering a
+    {investment_horizon} horizon. If the user names companies, research those
+    companies and relevant peers. If the user asks to discover stocks or
+    opportunities, identify and screen relevant listed companies as part of
+    this task. Cover business models, competitive position, sector structure,
+    market drivers, and screening rationale. Resolve company identity using
+    ticker, exchange, and geography. For discovery, state the screening
+    assumptions and selection rationale; do not claim the list is exhaustive.
+    Search for sources available on or before {research_date}. Prefer company,
+    exchange, and regulator disclosures for facts, and reputable independent
+    sources for context. Treat search snippets as leads unless they contain
+    enough detail to verify the claim. Cite URLs and publication dates for
+    material claims; separate reported facts from analysis, and state when
+    evidence is insufficient or inaccessible.
+  expected_output: >
+    A concise company or sector brief. For discovered companies, include
+    company name, ticker, exchange, screening rationale, and key caveats.
+    Support material claims with citations in the form [publisher, date, URL].
+    End with source limitations and open questions; do not present the
+    shortlist as exhaustive or as investment advice.
+  agent: market_researcher
+
+analyze_financials:
+  description: >
+    For the companies relevant to {query}, collect reported financial
+    performance and assess business fundamentals. Research as of {research_date}.
+    Use the companies and context identified by the market research task.
+    Cover revenue, margins, cash flow, debt, returns, earnings quality, capital
+    allocation, and valuation evidence. Prefer annual reports, quarterly
+    filings, and exchange disclosures. For every material figure, provide a
+    citation [publisher, publication date, URL], reporting period, currency,
+    units, and consolidated/standalone basis when available. Clearly label
+    actuals, guidance, estimates, and calculations; state calculation inputs
+    and dates. Compare like periods only. Treat search snippets as leads, not
+    verified financial statements. Do not invent figures; record missing,
+    conflicting, or inaccessible evidence.
+  expected_output: >
+    A financial and fundamental assessment covering reported performance and
+    business quality, with sourced figures, periods, units, basis, valuation
+    caveats, explicit assumptions, conflicts, and missing-data notes.
+  agent: financial_analyst
+
+review_news:
+  description: >
+    Review relevant company and sector news for {query} in {geography} as of
+    {research_date}, considering {investment_horizon}. Search for material
+    catalysts, corporate actions, regulatory developments, and adverse events.
+    Use the market research findings to identify relevant companies and
+    sector-specific developments. Include event dates and article publication
+    dates when available. Prefer company or regulator announcements for
+    confirmation. Distinguish confirmed facts from media interpretation,
+    allegations, and speculation. Cite [publisher, publication date, URL] for
+    each material item. Do not call an item recent without a date; flag
+    undated, stale, conflicting, or inaccessible sources.
+  expected_output: >
+    A concise, dated catalyst brief with event, event date, publication date,
+    source citation, likely relevance, and confirmation status. Separate
+    positive, negative, and unresolved developments; state source limitations.
+  agent: news_analyst
+
+assess_investment_case:
+  description: >
+    Assess the investment case for {query} in {geography} over the
+    {investment_horizon} horizon using the market, financial, and news
+    findings provided in task context. Do not redo those analyses; investigate
+    targeted gaps or conflicts if needed. Use search to check targeted source
+    gaps when appropriate.     For price context, search for dated price data and cite the source and
+    observation date. There is no direct market-price API configured. If no
+    dated price can be verified from an accessible source, say so and do not
+    invent a quote or technical trend. Rank material
+    company, sector, valuation, and governance risks, explaining evidence and
+    conditions that could make each risk material. Present balanced bull and
+    bear cases against the same evidence, compare their assumptions, identify
+    what could invalidate each case, and state what evidence would change the
+    conclusion. Cite targeted additional claims. Separate facts, estimates,
+    and scenarios; do not make personalized buy/sell recommendations.
+  expected_output: >
+    A concise balanced assessment with sourced, dated price context or an
+    explicit data limitation, a prioritized
+    evidence-based risk register, symmetric
+    bull and bear cases, key assumptions, invalidation conditions, and
+    unresolved questions.
+  agent: investment_analyst

@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install project
+        run: uv sync --locked
+      - name: Run tests
+        env:
+          OPENAI_API_KEY: test-placeholder
+          SERPER_API_KEY: test-placeholder
+        run: uv run --no-sync python -m unittest discover -s tests -v
+      - name: Build distributions
+        run: uv build
