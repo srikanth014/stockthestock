@@ -66,10 +66,10 @@ assess_investment_case:
     {investment_horizon} horizon using the market, financial, and news
     findings provided in task context. Do not redo those analyses; investigate
     targeted gaps or conflicts if needed. Use search to check targeted source
-    gaps when appropriate.     For price context, search for dated price data and cite the source and
-    observation date. There is no direct market-price API configured. If no
-    dated price can be verified from an accessible source, say so and do not
-    invent a quote or technical trend. Rank material
+    gaps when appropriate. For price context, search for dated price data and
+    cite the source and observation date. There is no direct market-price API
+    configured. If no dated price can be verified from an accessible source,
+    say so and do not invent a quote or technical trend. Rank material
     company, sector, valuation, and governance risks, explaining evidence and
     conditions that could make each risk material. Present balanced bull and
     bear cases against the same evidence, compare their assumptions, identify
