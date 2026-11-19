@@ -1,11 +1,11 @@
 # 📈 StockTheStock — AI-Powered Stock Research
 
-### Powered by CrewAI • Company and Sector Research • Multi-Agent Workflow
+### Built with CrewAI • Company and Sector Research • Multi-Agent Workflow
 
-StockTheStock researches companies, sectors, or stock-discovery questions and
-turns the findings into a source-linked Markdown report. Specialist agents
-gather market, financial, and news evidence; a separate review crew checks the
-evidence before the report is written.
+StockTheStock is built with [CrewAI](https://www.crewai.com/). Its Flow
+coordinates specialist agents that research companies, sectors, or
+stock-discovery questions, then review the evidence and write a source-linked
+Markdown report.
 
 > **Note:** Reports are for research and education, not personalized financial
 > advice or a buy/sell recommendation. Check the cited sources and current
@@ -86,6 +86,9 @@ price from web research, the report should say so rather than invent one.
 ---
 
 ## 🧰 Technology Stack
+
+[CrewAI](https://www.crewai.com/) is the core framework for the application's
+Flows, agents, tasks, crews, and memory.
 
 | Technology | Use in this project |
 | --- | --- |
